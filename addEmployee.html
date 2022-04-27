@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll</title>
+    <script type="text/javascript" src="index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body{
+            background-color:lightgrey;
+        }
+        input{
+            padding:5px;
+            margin-top:10px;
+        }
+        label{
+            font-weight: bold;
+            margin-top:10px;
+        }
+        .mainForm{
+            background:rgb(230, 230, 230);
+            display: grid;
+            grid-template-columns:auto auto;
+            width:60%;
+            padding:20px;
+            border-style: solid;
+            border-color: lightgrey;
+            margin:0 auto;
+            box-shadow: 0px 1px 3px #18345f;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .paySlip{
+            width:60%;
+            background:rgb(230, 230, 230);
+            border-style: solid;
+            border-color: lightgrey;
+            margin:0 auto;
+            margin-top:10px;
+            box-shadow: 0px 1px 3px #18345f;
+        }
+        .paySlipHeader{
+            display: grid;
+            grid-template-columns:auto auto auto auto;
+        }
+        .paySlipHeader div{
+            text-align: center;
+            border-style: solid !important;
+            border-color: lightgrey;
+            padding: 10px;
+        }
+        .paySlipMain{
+            display: grid;
+            grid-template-columns:auto auto;
+            border-style:solid !important;
+            border-color: lightgrey;
+            padding:20px;
+            padding: 10px;
+        }
+        .paySlipFooter{
+            width:60%;
+            margin: 0 auto;
+            margin-top:20px;
+        }
+        .paySlipFooter button{
+            background:green;
+            padding:10px;
+            font-weight: bold;
+            color:white;
+            text-align: center;
+            width:100%;
+            box-shadow: 0px 1px 3px #18345f;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="mainForm">
+    <label for="firstName">First Name</label>
+    <input id="firstName" type="text" placeholder="Enter First Name" autocomplete="off">
+    <label for="mi">M.I.</label>
+    <input id="mi" type="text" placeholder="Enter M.I." autocomplete="off">
+    <label for="lastName">Last Name</label>
+    <input id="lastName"type="text" placeholder="Enter Last Name" autocomplete="off">
+    <label for="hireDate">Hire Date</label>
+    <input id="hireDate" type="date" placeholder="Enter Hire Date" autocomplete="off">
+    <label for="email">Email</label>
+    <input id="email" type="email" placeholder="Enter Email Address" >
+    <label for="payDate">Pay Date</label>
+    <input id="payDate" type="date" placeholder="Enter Pay Date" autocomplete="off">
+    <label for="payPer">Pay Per</label>
+    <select id="payPer" style="margin-top: 10px;">
+        <option value="hourly">Hourly</option>
+    </select>
+    <label for="payRate">Pay Rate</label>
+    <input id="payRate" type="number" placeholder="Enter Pay Rate" autocomplete="off">
+    <label for="defaultHours">Default Hours</label>
+    <input  id="defaultHours" type="number" placeholder="Enter Default Hours/day" autocomplete="off">
+    <label for="vacationPolicy">Let's create a new vacation policy for test</label>
+    <input id="vacationPolicy" type="number" max="100" placeholder="Enter Vacation Policy" autocomplete="off">
+    </div>
+    <div class="paySlip">
+        <div class="paySlipHeader">
+            <div style="display:grid;grid-template-columns: auto auto;">
+                <img src="images/canadianFlag.svg" width="200px" height="80px">
+                <p>Canadian Revenue Agency</p>
+            </div>
+            <div><h3>Agency du revenue du Canada</h3></div>
+            <div><h3>2022 Personal Tax Credits Return</h3></div>
+            <div><h3>TD1</h3></div>
+        </div>
+        <div class="paySlipMain">
+            <label for="firstNameSlip">First Name </label>
+            <input type="text" id="firstNameSlip" placeholder="Enter First Name">
+            <label for="lastNameSlip">Last Name </label>
+            <input type="text" id="lastNameSlip" placeholder="Eneter Last Name">
+            <label for="miSlip">M.I.</label>
+            <input type="text" id="miSlip" placeholder="Enter M.I.">
+            <label for="dateOfBirthSlip">Date of Birth </label>
+            <input type="date" id="dateOfBirthSlip" placeholder="Enter Date of Birth">
+            <label for="employeeNumberSlip">Employee Number </label>
+            <input type="number" id="employeeNumberSlip" placeholder="Enter Employee Number">
+            <label for="homeAddressSlip">Home Address</label>
+            <input type="text" id="homeAddressSlip" placeholder="Enter Home Address">
+            <label for="countryOfPaymentResidenceSlip">Country of Payment Residence</label>
+            <input type="text" id="countryOfPaymentResidenceSlip" placeholder="Enter Country of Payment Residence">
+            <label for="sinSlip">Socal Insurance Number </label>
+            <input type="text" id="sinSlip" placeholder="Enter Social Insurance Number">
+            <label for="townSlip">Town </label>
+            <input type="text" id="townSlip" placeholder="Enter Town/City">
+            <label for="provinceSlip">Province </label>
+            <input type="text" id="provinceSlip" placeholder="Enter Province">
+            <label for="postalCodeSlip">postal Code </label>
+            <input type="text" id="postalCodeSlip" placeholder="Enter Postal Code">
+            <label for="federalTD1AmmountSlip">Federal TD1 amount (total claim amount)</label>
+            <input type="text" id="federalTD1AmmountSlip" placeholder="Enter Federal TD1 amount (total claim amount)">
+            <label for="additionalTaxAmountSlip">Additional tax amounts that you want to deduct from each pay cheque</label>
+            <input type="text" id="additionalTaxAmountSlip" placeholder="Enter Additional tax amounts that you want to deduct from each pay cheque">
+            <label for="provinceTaxSlip">Provincial Tax </label>
+            <input type="text" id="provinceTaxSlip" placeholder="Enter Province">
+            <label for="taxExemptionsSlip">Tax Exemptions </label>
+            <input type="text" id="taxExemptionsSlip" placeholder="Enter Exemptions">
+        </div>
+    </div>
+    <div class="paySlipFooter">
+        <button onclick="submitEmployeeDetails()">SUBMIT</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll</title>
+    <script src="index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body{background:rgb(241, 241, 241);}
+        table, th, td {
+        border: 1px solid;
+        text-align: center;
+        padding:5px;
+        }
+        .allChequeListHeader{
+            display: grid;
+            grid-template-columns:10% 15% 10% 15% 10% 15% 10% 15%;
+            text-align: center;
+            padding:20px;
+            background:rgb(165, 165, 165);
+        }
+        .saveChanges{
+            display:none;
+            background:rgb(165, 165, 165);
+            margin-bottom: 5px;
+        }
+    </style>
+    <script src="https://rawgit.com/unconditional/jquery-table2excel/master/src/jquery.table2excel.js"></script>
+</head>
+<body onload="getYears()">
+    <div class="allChequeListHeader">
+        <h1>Week</h1>
+        <select onchange="allEmployeesChequeList()" id="generatedDates" style="max-height: 40px !important;max-width: 200px;border-radius: 5px;margin-top: 7%;">
+        </select>
+        <h1>Year</h1>
+        <select id="year" onchange='allEmployeesChequeList()' style="max-height: 40px !important;max-width: 200px;border-radius: 5px;margin-top: 7%;"></select>
+        <h1>Bank</h1>
+        <select style="max-height: 40px !important;max-width: 200px;border-radius: 5px;margin-top: 7%;">
+            <option value="">Select Bank</option>
+            <option value="BANK AL HABIB LIMITED">BAHL</option>
+            <option value="HABIB BANK LIMITED">HBL</option>
+            <option value="NATION BANK OF PAKISTAN">NBP</option>
+        </select>
+        <h1>Total:</h1>
+        <h1 id="totalPay">0</h1>
+    </div>
+    <div id="saveChanges" class="saveChanges">
+        <button onclick="saveChanegesAllEmployeeChequeList()" style="background:greenyellow;padding:5px;float:right;margin:2%;cursor: pointer;margin-left: 1%;">Save Changes</button>
+        <button onclick="disableSaveChanges()" style="background:white;padding:5px;float:right;margin:2%;margin-right: 0px;cursor: pointer;">Cancel</button>
+    </div>
+    <button id="downloadList" onclick="tableToCSV()" style="padding:5px;">Download List</button>
+    <div style="background:white;margin-top: 20px;">
+        <table id="employeeCheques" style="width: 100%;">
+            <tr>
+                <th><input type="checkbox" onclick="checkAllCheques()"></th>
+                <th>EMPLOYEE</th>
+                <th>PAY METHOD</th>
+                <th>REGULAR PAY HRS</th>
+                <th>OT HRS</th>
+                <th>VACATION PAY HRS</th>
+                <th>STAT HOLIDAY PAY HRS</th>
+                <th>BONUS</th>	
+                <th>MEMO</th>	
+                <th>TOTAL HRS</th>	
+                <th>TOTAL PAY</th>
+            </tr>
+        </table>
+    </div>
+     <script type="text/javascript">
+        function tableToCSV() {
+ 
+            // Variable to store the final csv data
+            var csv_data = [];
+ 
+            // Get each row data
+            var rows = document.getElementsByTagName('tr');
+            for (var i = 0; i < rows.length; i++) {
+ 
+                // Get each column data
+                var cols = rows[i].querySelectorAll('td,th');
+ 
+                // Stores each csv row data
+                var csvrow = [];
+                for (var j = 0; j < cols.length; j++) {
+ 
+                    // Get the text data of each cell
+                    // of a row and push it to csvrow
+                    csvrow.push(cols[j].innerHTML);
+                }
+ 
+                // Combine each column value with comma
+                csv_data.push(csvrow.join(","));
+            }
+ 
+            // Combine each row data with new line character
+            csv_data = csv_data.join('\n');
+ 
+            // Call this function to download csv file 
+            downloadCSVFile(csv_data);
+ 
+        }
+ 
+        function downloadCSVFile(csv_data) {
+ 
+            // Create CSV file object and feed
+            // our csv_data into it
+            CSVFile = new Blob([csv_data], {
+                type: "text/csv"
+            });
+ 
+            // Create to temporary link to initiate
+            // download process
+            var temp_link = document.createElement('a');
+ 
+            // Download csv file
+            temp_link.download = "allCheques.csv";
+            var url = window.URL.createObjectURL(CSVFile);
+            temp_link.href = url;
+ 
+            // This link should not be displayed
+            temp_link.style.display = "none";
+            document.body.appendChild(temp_link);
+ 
+            // Automatically click the link to
+            // trigger download
+            temp_link.click();
+            document.body.removeChild(temp_link);
+        }
+    </script>
+</body>
+</html>

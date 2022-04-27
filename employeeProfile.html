@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poyroll</title>
+    <script src="index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body{
+            font-weight:bold;
+        }
+        .employeeTitle{
+            background:rgb(238, 238, 238);
+            padding: 30px;
+            padding-bottom: 80px !important;
+        }
+        .employeeInfo{
+            display:grid;
+            grid-template-columns:auto auto auto;
+            padding: 30px;
+        }
+        .tab{
+            display:grid;
+            grid-template-columns: repeat(4,200px);
+            margin-left:1%;
+            text-align: center;
+        }
+        .employeeInfo div{
+            font-size:20px !important;
+        }
+        span{
+            font-weight:400;
+        }
+    </style>
+    <script>
+        function checkList(){
+            window.location.href = "payChequeList.html"
+        }
+    </script>
+</head>
+<body onload="employeeProfileData()">
+    <div class="employeeTitle">
+    <h1 id="employeeName">USERNAME</h1>
+    <h4 id="employeeEmail">EMAIL</h4>
+    </div>
+    <div class="tab">
+    <h3 style="border-style: inset;padding:7px;background:lightblue;cursor: pointer;">Employee Details</h3>
+    <h3 onclick="checkList()" style="border-style: inset;padding:7px;cursor: pointer;">Pay Cheque List</h3>
+    <h3 onclick="editEmployeeProfile()" style="border-style: inset;padding:7px;cursor: pointer;">Edit Profile</h3>
+    <a href="index.html" style="padding: 20px;padding-left: 0px;">Back to Payroll</a>
+    </div>
+    <div class="employeeInfo">
+    <div>
+        <u><h2>PAY</h2></u>
+        Taxes:&nbsp;<span id="taxes"></span><br>
+        Federal:&nbsp;<span id="federal"></span><br>
+        Provincial:&nbsp;<span id="province"></span><br>
+        Social Insurance no:&nbsp;<span id="sin"></span><br>
+        Pay rate:&nbsp;<span id="payRate"></span><br>
+        Additional pay:&nbsp;<span id="additionalPay"></span><br>
+        Pay schedule:&nbsp;<span id="paySchedule"></span><br>
+        Payment method:&nbsp;<span id="paymentMethod"></span><br>
+        Deductions:&nbsp;<span id="deduction"></span><br>
+        Company-paid:&nbsp;<span id="company"></span><br>
+        contributions:&nbsp;<span id="contribution"></span><br>
+    </div>
+    <div>
+        <u><h2>PROFILE</h2></u>
+        Address:&nbsp;<span id="address"></span><br>
+        Date of Birth:&nbsp;<span id="dob"></span><br>
+        Gender:&nbsp;<span id="gender"></span><br>
+        Notes:&nbsp;<span id="notes"></span><br>
+    </div>
+    <div>
+        <u><h2>Employment</h2></u>
+        Employment Id:&nbsp;<span id="id"></span><br>
+        Status:&nbsp;<span id="status"></span><br>
+        Hired Date:&nbsp;<span id="hiredDate"></span><br>
+        Job Title:&nbsp;<span id="jobTitle"></span><br>
+    </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poyroll</title>
+    <script src="index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .employeeCard{
+            display: grid;
+            grid-template-columns: repeat(7,14%);
+            font-family: Arial, Helvetica, sans-serif;
+            border:2px solid black;
+            box-shadow: 1px 1px 3px lightgrey;
+            padding:10px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .employeeTitle{
+            background:rgb(238, 238, 238);
+            padding: 30px;
+            padding-bottom: 80px !important;
+        }
+        .employeeInfo{
+            display:grid;
+            grid-template-columns:auto auto auto;
+            padding: 30px;
+        }
+        .tab{
+            display:grid;
+            grid-template-columns: repeat(3,200px);
+            margin-left:1%;
+            text-align: center;
+        }
+        .employeeInfo div{
+            font-size:20px !important;
+        }
+        .table{
+            width:100%;
+            overflow: scroll;
+        }
+        .saveChanges{
+            display:none;
+            background:rgb(165, 165, 165);
+            margin-bottom: 5px;
+        }
+    </style>
+    <script>
+        function employeeDetail(){
+            window.location.href = "employeeProfile.html";
+        }
+    </script>
+</head>
+<!-- onload="employeeProfileChequeList()" -->
+<body onload="employeeProfileChequeList()">
+    <div class="employeeTitle">
+    <h1 id="employeeName">USERNAME</h1>
+    <h4 id="employeeEmail">EMAIL</h4>
+    </div>
+    <div class="tab">
+        <h3 onclick="employeeDetail()" style="border-style: inset;padding:7px;cursor: pointer;">Employee Details</h3>
+        <h3 style="border-style: inset;padding:7px;cursor: pointer;background:lightblue;">Pay Cheque List</h3>
+        <a href="index.html" style="padding: 20px;padding-left: 0px;">Back to Payroll</a>
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div id="chequeNumberSave" class="saveChanges">
+        <button onclick="saveChanegesEmployeeChequeList()" style="background:greenyellow;padding:5px;float:right;margin:2%;cursor: pointer;margin-left: 1%;">Save Changes</button>
+        <button onclick="disableCheckNumberSave()" style="background:white;padding:5px;float:right;margin:2%;margin-right: 0px;cursor: pointer;">Cancel</button>
+    </div>
+    <div class="table" id="employeeCheckListTable">
+        <div class="employeeCard" style="background:black;color:white;font-weight:bold">
+            <div>PAY DATE</div>
+            <div>NAME</div> 
+            <div>TOTAL PAY</div>
+            <div>NET PAY</div>
+            <div>PAY METHOD</div>
+            <div>CHEQUE NUMBER</div>
+            <div>STATUS</div>
+        </div>
+    </div>
+</body>
+</html>

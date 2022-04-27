@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll</title>
+    <script type="text/javascript" src="index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .employeeCard{
+            display: grid;
+            grid-template-columns: repeat(5,20%);
+            font-family: Arial, Helvetica, sans-serif;
+            /*border:2px solid black;*/
+            box-shadow: 1px 1px 3px lightgrey;
+            padding:10px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .runPayRoll{
+            color:white; 
+            background-color: seagreen;
+            border-radius:10px;
+            padding:10px;
+            font-weight: bold;
+            margin-left: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body onload="employees()">
+    <h2>PayRoll</h2><br>
+    <div>
+    <button class="runPayRoll" onclick="runPayRoll()">Run payroll</button><button class="runPayRoll" onclick="addEmployee()">Add Employee</button><br>
+    </div>
+    <div id="employees">
+        <div class="employeeCard" style="background:black;color:white;font-weight:bold">
+            <div>Name</div>
+            <div>PAY RATE</div>
+            <div>PAY METHOD</div>
+            <div>AVAILABLE VACATION</div>
+            <div>STATUS</div>
+        </div>
+    <div>
+</body>
+</html>
